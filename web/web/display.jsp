@@ -1,5 +1,8 @@
 <!doctype html>
 <html lang="en">
+<%@ page language="java" pageEncoding="UTF-8" import="java.util.*" %>
+<%@ page import="classes.JMovie" %>
+<%JMovie movie = (JMovie)request.getAttribute("movie");%>
 
 <head>
     <title>Hello, world!</title>
@@ -59,11 +62,11 @@
         <div class="card movie-card">
             <div class="card-body">
                     <div class="media">
-                            <img class="media-img" src="https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg" alt="Generic placeholder image">
+                            <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
                             <div class="media-body">
-                                <div class="movie-title">Toy Story&nbsp;&nbsp;<span class="movie-info-item-text">1997</span>&nbsp;&nbsp;<span class="movie-info-item-text">Comedy|Adventure</span></div>
+                                <div class="movie-title"><%=movie.getMovieName()%>&nbsp;&nbsp;<span class="movie-info-item-text"><%=movie.getYear()%></span>&nbsp;&nbsp;<span class="movie-info-item-text"><%=movie.getGenre()%></span></div>
                                 
-                                <div class="movie-storyline">    A little boy named Andy loves to be in his room, playing with his toys, especially his doll named "Woody". But, what do the toys do when Andy is not with them, they come to life. Woody believes that his life (as a toy) is good. However, he must worry about Andy's family moving, and what Woody does not know is about Andy's birthday party. Woody does not realize that Andy's mother gave him an action figure known as Buzz Lightyear, who does not believe that he is a toy, and quickly becomes Andy's new favorite toy. Woody, who is now consumed with jealousy, tries to get rid of Buzz. Then, both Woody and Buzz are now lost. They must find a way to get back to Andy before he moves without them, but they will have to pass through a ruthless toy killer, Sid Phillips.</div>
+                                <div class="movie-storyline"><%=movie.getIntroduction()%></div>
                                 
                             </div>
                         </div>
@@ -76,13 +79,13 @@
                 <div class="card-body">
                     <dl class="movie-info"></dl>
                     <dt>Director</dt>
-                    <dd>Tom Hanks</dd>
+                    <dd><%=movie.getDirector()%></dd>
                     <dt>Stars</dt>
-                    <dd>Tom Hanks, Tom Hanks, Tom Hanks</dd>
+                    <dd><%=movie.getStars()%></dd>
                     <dt>Genre</dt>
-                    <dd>Comedy|Adventure</dd>
+                    <dd><%=movie.getGenre()%></dd>
                     <dt>Country</dt>
-                    <dd>USA</dd>
+                    <dd><%=movie.getCountry()%></dd>
                 </div>
             </div>
         <div class="card movie-info-card">

@@ -4,18 +4,17 @@
 body {
     background-color: #000;
 }
+
 #nav-img {
     height: 25px;
 }
-
+form {
+    margin-left: 20px;
+}
 #nav-head {
     width: 40px;
     border-radius: 40px;
     border: 1px solid white;
-}
-
-#nav-bell {
-    width: 25px;
 }
 
 #carouselExampleIndicators {
@@ -32,11 +31,12 @@ body {
 .row {
     width: 1280px;
     margin: auto;
-    margin-top: 50px;
 }
 
 .card {
-    width: 200px;
+    width: 500px;
+    display: inline;
+    float: left;
 }
 .card img {
     width: 160px;
@@ -55,6 +55,9 @@ body {
 .card-body h5 {
     text-align: center;
     color: #437ab2;;
+}
+.card-body {
+    width: 200px;
 }
 
 .card-body p{
@@ -81,4 +84,46 @@ body {
 }
 #recommended-movie-header {
     width: 35%;
+}
+
+.media {
+    border: 0px solid white;
+    border-radius: 5px;
+    width: 350px;
+    height: 150px;
+    margin-left:60px;
+    margin-top:40px;
+    background-color: #FFF;
+}
+.media-img {
+    height:150px;
+}
+
+.media-body {
+    margin-top: 10px;
+    margin-left:20px;
+}
+
+.movie-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #437ab2;
+    line-height: 20px;
+}
+.movie-info {
+    margin-top: 10px;
+}
+.movie-info-item {
+    margin-bottom: 0px;
+    font-weight: bold;
+    color:#666666;
+    font-size: 12px;
+}
+.movie-info-item-text {
+    color: #888888;
+    font-size: 12px;
+}
+
+.movie-info {
+    width: 220px;
 }

@@ -1,5 +1,4 @@
 package classes;
-
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,8 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index")
-public class SearchOperate extends HttpServlet {
+@WebServlet("/search")
+public class SearchOperate extends HttpServlet{
+    public void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        request.setCharacterEncoding("UTF-8");
+        String movieName = request.getParameter("name");
+
+        ArrayList<JMovie> list = new ArrayList<JMovie>();
+        list = JMovie.FindMoviesByName(movieName);
+        request.setAttribute("list",list);
+        request.getRequestDispatcher("search.jsp").forward(request, response);
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         doPost(request, response);
@@ -18,9 +26,11 @@ public class SearchOperate extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         request.setCharacterEncoding("UTF-8");
-        ArrayList<JMovie> movies = null;
-        movies = JMovie.FindTenMovies();
-        request.setAttribute("movies",movies);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        String movieName = request.getParameter("name");
+
+        ArrayList<JMovie> list = new ArrayList<JMovie>();
+        list = JMovie.FindMoviesByName(movieName);
+        request.setAttribute("list",list);
+        request.getRequestDispatcher("search.jsp").forward(request, response);
     }
 }

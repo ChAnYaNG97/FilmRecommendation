@@ -13,9 +13,8 @@ public class JMovie {
     private String country;
     private String introduction;
     private String relatedMovies;
-    private String tags;
     public JMovie(){}
-    public JMovie(int movieId, String movieName,String year, String genre, String director, String postPic, String stars, String country, String introduction, String relatedMovies, String tags){
+    public JMovie(int movieId, String movieName,String year, String genre, String director, String postPic, String stars, String country, String introduction, String relatedMovies){
         this.movieId = movieId;
         this.movieName = movieName;
         this.year = year;
@@ -26,7 +25,6 @@ public class JMovie {
         this.country = country;
         this. introduction = introduction;
         this.relatedMovies = relatedMovies;
-        this.tags = tags;
     }
 
     public int getMovieId() {
@@ -109,14 +107,6 @@ public class JMovie {
         this.relatedMovies = relatedMovies;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
     public static  ArrayList<JMovie> FindAllMovie(){
         return JFilmDA.FindAllMovies();
     }
@@ -129,14 +119,18 @@ public class JMovie {
         return JFilmDA.FindMoviesByYear(mYear);
     }
 
-    public static  ArrayList<JMovie> FindTenMovies(){
-        return JFilmDA.FindTenMovies();
+    public static  ArrayList<JMovie> FindMoviesWithNum(int mNum){
+        return JFilmDA.FindMoviesWithNum(mNum);
+    }
+    public static  JMovie FindMoviesById(int id){
+        return JFilmDA.FindMoviesById(id);
     }
 
-        public static  void main(String args[]) {
-            ArrayList<JMovie> m = new ArrayList<JMovie>();
-            m = FindTenMovies();
-            System.out.println(m.size());
 
-    }
+//    public static  void main(String args[]) {
+//            ArrayList<JMovie> m = new ArrayList<JMovie>();
+//            m = FindMovies();
+//            System.out.println(m.size());
+//
+//    }
 }

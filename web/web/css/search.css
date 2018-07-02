@@ -7,16 +7,15 @@ body {
 #nav-img {
     height: 25px;
 }
-
+form {
+    margin-left: 20px;
+}
 #nav-head {
     width: 40px;
     border-radius: 40px;
     border: 1px solid white;
 }
 
-#nav-bell {
-    width: 25px;
-}
 
 #result-card {
     margin: auto;
@@ -37,7 +36,7 @@ body {
     border: 1px solid #dfdfdf;
     width: 400px;
     height: 150px;
-    margin-left:10px;
+    margin-left:50px;
     margin-top:10px;
 }
 .media-img {
@@ -53,16 +52,21 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #437ab2;
+    line-height: 20px;
+}
+
+.movie-info {
+    margin-top: 10px;
 }
 .movie-info-item {
     margin-bottom: 0px;
-    text-emphasis: bold;
+    font-weight: bold;
     color:#666666;
-    font-size: 14px;
+    font-size: 12px;
 }
 .movie-info-item-text {
     color: #888888;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .page-header {

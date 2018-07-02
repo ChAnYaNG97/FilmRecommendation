@@ -6,7 +6,7 @@ public class Main {
     public static void main(String args[])
     {
         ArrayList<JMovie> list = new ArrayList<JMovie>();
-        list = JMovie.FindTenMovies();
+        list = JMovie.FindMoviesWithNum(9);
         for(JMovie ele : list)
         {
             System.out.println(ele.getMovieName());

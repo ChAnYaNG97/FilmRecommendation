@@ -24,7 +24,6 @@ public class JFilmDA {
     static String stars;
     static String country;
     static String introduction;
-    static String tags;
     static String relatedMovies;
     static String rating;
     static String userId;
@@ -66,7 +65,7 @@ public class JFilmDA {
                 movieId = rs.getInt("movieId");
                 movieName = rs.getString("movieName");
                 year = rs.getString("year");
-                tags = rs.getString("tags");
+
                 genre = rs.getString("genre");
                 director = rs.getString("director");
                 postPic = rs.getString("postPic");
@@ -74,7 +73,7 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, tags);
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
                 movies.add(jmovie);
 
             }
@@ -144,9 +143,43 @@ public class JFilmDA {
 
     public static ArrayList<JMovie> FindMoviesByName(String mName) {
         ConnectInit();
-        String sql = "SELECT * FROM Movie WHERE movieName = '" + mName + "'";
+        String sql = "SELECT * FROM Movie WHERE lower(movieName) LIKE '%" + mName + "%'" ;
+        System.out.println(sql);
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
+        try {
+            ResultSet rs = smt.executeQuery(sql);
+            while (rs.next()) {
+                movieId = rs.getInt("movieId");
+                movieName = rs.getString("movieName").split("\\(")[0];
+                year = rs.getString("year");
+                genre = rs.getString("genre");
+                director = rs.getString("director");
+                postPic = rs.getString("postPic");
+                stars = rs.getString("stars");
+                country = rs.getString("country");
+                introduction = rs.getString("introduction");
+                relatedMovies = rs.getString("relatedMovies");
+
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
+                movies.add(jmovie);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Terminate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    public static JMovie FindMoviesById(int id) {
+        ConnectInit();
+        String sql = "SELECT * FROM Movie WHERE movieId = " + id;
+        jmovie = null;
         try {
             ResultSet rs = smt.executeQuery(sql);
             while (rs.next()) {
@@ -160,9 +193,8 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-                tags = rs.getString("tags");
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, tags);
-                movies.add(jmovie);
+
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
             }
             rs.close();
         } catch (SQLException e) {
@@ -173,7 +205,7 @@ public class JFilmDA {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return movies;
+        return jmovie;
     }
 
     public static ArrayList<JMovie> FindMoviesByYear(String mYear) {
@@ -194,8 +226,8 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-                tags = rs.getString("tags");
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, tags);
+
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
                 movies.add(jmovie);
             }
             rs.close();
@@ -210,9 +242,9 @@ public class JFilmDA {
         return movies;
     }
 
-    public static  ArrayList<JMovie> FindTenMovies(){
+    public static  ArrayList<JMovie> FindMoviesWithNum(int mNum){
         ConnectInit();
-        String sql = "SELECT * FROM Movie ORDER BY RAND() LIMIT 10";
+        String sql = "SELECT * FROM Movie ORDER BY RAND() LIMIT " + mNum;
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
         try {
@@ -220,7 +252,7 @@ public class JFilmDA {
             System.out.println("rs" + rs);
             while (rs.next()) {
                 movieId = rs.getInt("movieId");
-                movieName = rs.getString("movieName");
+                movieName = rs.getString("movieName").split("\\(")[0];
                 year = rs.getString("year");
                 genre = rs.getString("genre");
                 director = rs.getString("director");
@@ -229,8 +261,7 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-                tags = rs.getString("tags");
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, tags);
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
                 movies.add(jmovie);
             }
             rs.close();
