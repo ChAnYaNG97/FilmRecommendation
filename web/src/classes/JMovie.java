@@ -1,5 +1,6 @@
 package classes;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 public class JMovie {
     private int movieId;
@@ -122,5 +123,20 @@ public class JMovie {
 
     public static ArrayList<JMovie> FindMoviesByName(String mName){
         return JFilmDA.FindMoviesByName(mName);
+    }
+
+    public static ArrayList<JMovie> FindMoviesByYear(String mYear){
+        return JFilmDA.FindMoviesByYear(mYear);
+    }
+
+    public static  ArrayList<JMovie> FindTenMovies(){
+        return JFilmDA.FindTenMovies();
+    }
+
+        public static  void main(String args[]) {
+            ArrayList<JMovie> m = new ArrayList<JMovie>();
+            m = FindTenMovies();
+            System.out.println(m.size());
+
     }
 }

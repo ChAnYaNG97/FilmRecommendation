@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.sql.*;
 import java.lang.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class JFilmDA {
@@ -209,6 +210,36 @@ public class JFilmDA {
         return movies;
     }
 
+    public static  ArrayList<JMovie> FindTenMovies(){
+        ConnectInit();
+        String sql = "SELECT * FROM Movie ORDER BY RAND() LIMIT 10";
+        jmovie = null;
+        ArrayList<JMovie> movies = new ArrayList<JMovie>();
+        try {
+            ResultSet rs = smt.executeQuery(sql);
+            System.out.println("rs" + rs);
+            while (rs.next()) {
+                movieId = rs.getInt("movieId");
+                movieName = rs.getString("movieName");
+                year = rs.getString("year");
+                genre = rs.getString("genre");
+                director = rs.getString("director");
+                postPic = rs.getString("postPic");
+                stars = rs.getString("stars");
+                country = rs.getString("country");
+                introduction = rs.getString("introduction");
+                relatedMovies = rs.getString("relatedMovies");
+                tags = rs.getString("tags");
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, tags);
+                movies.add(jmovie);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
     public static ArrayList<JRating> FindRatingById(int mId, String uId) {
         ConnectInit();
         String sql = "SELECT * FROM Rating WHERE  userId = ' " + uId + " ' AND movieId = " + mId;
@@ -261,11 +292,5 @@ public class JFilmDA {
         return users;
     }
 
-    public static  void main(String args[]) throws SQLException {
-        ArrayList<JMovie> m = new ArrayList<JMovie>();
-        m = FindMoviesByName("Toy Story");
-        System.out.println(m.size());
-//        ConnectInit();
-//        Terminate();
-    }
+
 }
