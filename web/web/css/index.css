@@ -1,0 +1,84 @@
+#navibar {
+    /* background-color: #3696d1; */
+}
+body {
+    background-color: #000;
+}
+#nav-img {
+    height: 25px;
+}
+
+#nav-head {
+    width: 40px;
+    border-radius: 40px;
+    border: 1px solid white;
+}
+
+#nav-bell {
+    width: 25px;
+}
+
+#carouselExampleIndicators {
+    margin-top: 100px;
+    margin: auto;
+}
+.carousel-item img {
+   height: 720px;
+}
+.carousel-caption h3 {
+    color: #91C2F2;
+}
+
+.row {
+    width: 1280px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.card {
+    width: 200px;
+}
+.card img {
+    width: 160px;
+    margin: auto;
+    margin-top:10px;
+}
+.card-deck { 
+    margin: auto;
+    margin-top: 30px;
+}
+.card-text {
+    font-size: 12px;
+    margin: auto;
+}
+
+.card-body h5 {
+    text-align: center;
+    color: #437ab2;;
+}
+
+.card-body p{
+    text-align: center;
+}
+.page-header {
+    width: 1280px;
+    margin: auto;
+    margin-top:50px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #000;
+    margin-left: auto;
+}
+
+.header-content-wrapper {
+    background-color: #FFF;
+    margin: auto;
+}
+
+
+#all-movie-header {
+    width: 15%;
+}
+#recommended-movie-header {
+    width: 35%;
+}

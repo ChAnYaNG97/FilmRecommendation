@@ -1,0 +1,71 @@
+#navibar {
+    /* background-color: #3696d1; */
+}
+body {
+    background-color: #000;
+}
+#nav-img {
+    height: 25px;
+}
+
+#nav-head {
+    width: 40px;
+    border-radius: 40px;
+    border: 1px solid white;
+}
+
+#nav-bell {
+    width: 25px;
+}
+
+#result-card {
+    margin: auto;
+    margin-top:150px;
+    width: 960px;
+    
+}
+
+.row {
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.card {
+    width: 100px;
+}
+.media {
+    border: 1px solid #dfdfdf;
+    width: 400px;
+    height: 150px;
+    margin-left:10px;
+    margin-top:10px;
+}
+.media-img {
+    height:148px;
+}
+
+.media-body {
+    margin-top: 10px;
+    margin-left:20px;
+}
+
+.movie-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #437ab2;
+}
+.movie-info-item {
+    margin-bottom: 0px;
+    text-emphasis: bold;
+    color:#666666;
+    font-size: 14px;
+}
+.movie-info-item-text {
+    color: #888888;
+    font-size: 14px;
+}
+
+.page-header {
+    margin: auto;
+    margin-top: 10px;
+}
