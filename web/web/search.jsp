@@ -29,7 +29,7 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="form-inline my-2 my-lg-0" method="post" action="/search" accept-charset="utf-8">
+            <form class="form-inline my-2 my-lg-0" method="post" action="/web/search" accept-charset="utf-8">
                 <input id="nav-search" name="name" class="form-control form-control-sm mr-sm-3" type="search" placeholder="搜索你感兴趣的内容" aria-label="Search">
                 <button class="btn btn-primary btn-sm" method="post" type="submit">search</button>
             </form>
@@ -47,10 +47,10 @@
                     for(JMovie movie :list){
                 %>
                     <div class="media">
-                            <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
+                        <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
                             <div class="media-body">
                                 <div class="movie-title">
-                                    <div class="movie-title"><%=movie.getMovieName()%></div>
+                                    <div class="movie-title"><a href="/web/display?id=<%=movie.getMovieId()%>" methods=""><%=movie.getMovieName()%></a></div>
                                 </div>
     
                                 <div class="movie-info">

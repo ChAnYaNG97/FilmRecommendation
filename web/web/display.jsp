@@ -62,7 +62,7 @@
         <div class="card movie-card">
             <div class="card-body">
                     <div class="media">
-                            <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
+                        <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
                             <div class="media-body">
                                 <div class="movie-title"><%=movie.getMovieName()%>&nbsp;&nbsp;<span class="movie-info-item-text"><%=movie.getYear()%></span>&nbsp;&nbsp;<span class="movie-info-item-text"><%=movie.getGenre()%></span></div>
                                 

@@ -2,22 +2,32 @@ package classes;
 
 import java.util.ArrayList;
 public class JUser {
-    private String userId;
+    private int userId;
+    private String userName;
     private String password;
     private String recommendedMovies;
     public  JUser() {}
-    public JUser(String userId, String password, String recommendedMovies) {
+    public JUser(int userId, String userName, String password, String recommendedMovies) {
         this.userId = userId;
+        this.userName = userName;
         this.password = password;
         this.recommendedMovies = recommendedMovies;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

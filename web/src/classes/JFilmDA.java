@@ -5,8 +5,6 @@ import java.sql.Statement;
 import java.sql.*;
 import java.lang.*;
 import java.util.ArrayList;
-import java.util.Random;
-
 
 public class JFilmDA {
     private static JMovie jmovie;
@@ -16,6 +14,8 @@ public class JFilmDA {
     private static  Connection con = null;
     private static  Statement smt;
     static int movieId;
+    static int userId;
+    static String userName;
     static String movieName;
     static String year;
     static String genre;
@@ -26,7 +26,6 @@ public class JFilmDA {
     static String introduction;
     static String relatedMovies;
     static String rating;
-    static String userId;
     static String password;
     static String recommendedMovies;
 
@@ -62,6 +61,7 @@ public class JFilmDA {
         try {
             ResultSet rs = smt.executeQuery(sql);
             while (rs.next()) {
+
                 movieId = rs.getInt("movieId");
                 movieName = rs.getString("movieName");
                 year = rs.getString("year");
@@ -89,6 +89,34 @@ public class JFilmDA {
         return movies;
     }
 
+    public static ArrayList<JUser> FindAllUsers() {
+        ConnectInit();
+        String sql = "SELECT * FROM User";
+        juser = null;
+        ArrayList<JUser> users = new ArrayList<JUser>();
+        try {
+            ResultSet rs = smt.executeQuery(sql);
+            while (rs.next()) {
+                userId = rs.getInt("userId");
+                userName = rs.getString("userName");
+                password = rs.getString("password");
+                recommendedMovies = rs.getString("recommendedMovies");
+                juser = new JUser(userId, userName, password, recommendedMovies);
+                users.add(juser);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Terminate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+
     public static ArrayList<JRating> FindAllRatings() {
         ConnectInit();
         String sql = "SELECT * FROM Rating";
@@ -97,7 +125,7 @@ public class JFilmDA {
         try {
             ResultSet rs = smt.executeQuery(sql);
             while (rs.next()) {
-               userId = rs.getString("userId");
+               userId = rs.getInt("userId");
                movieId = rs.getInt("movieId");
                rating = rs.getString("rating");
                jrating = new JRating(userId, movieId, rating);
@@ -115,52 +143,37 @@ public class JFilmDA {
         return ratings;
     }
 
-    public static ArrayList<JUser> FindAllUsers() {
-        ConnectInit();
-        String sql = "SELECT * FROM User";
-        juser = null;
-        ArrayList<JUser> users = new ArrayList<JUser>();
-        try {
-            ResultSet rs = smt.executeQuery(sql);
-            while (rs.next()) {
-                userId = rs.getString("userId");
-                password = rs.getString("password");
-                recommendedMovies = rs.getString("recommendedMovies");
-                juser = new JUser(userId, password, recommendedMovies);
-                users.add(juser);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            Terminate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return users;
-    }
+
 
     public static ArrayList<JMovie> FindMoviesByName(String mName) {
         ConnectInit();
-        String sql = "SELECT * FROM Movie WHERE lower(movieName) LIKE '%" + mName + "%'" ;
+        String sql = "SELECT * FROM Movie WHERE lower(movieName) LIKE '%" + mName + "%'";
         System.out.println(sql);
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
         try {
             ResultSet rs = smt.executeQuery(sql);
             while (rs.next()) {
+                postPic = rs.getString("postPic");
+                stars = rs.getString("stars");
                 movieId = rs.getInt("movieId");
                 movieName = rs.getString("movieName").split("\\(")[0];
                 year = rs.getString("year");
                 genre = rs.getString("genre");
                 director = rs.getString("director");
-                postPic = rs.getString("postPic");
                 stars = rs.getString("stars");
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-
+                if (postPic.equals("")){
+                    postPic = "./images/NoPicFind.png";
+                }
+                if (stars.equals("")){
+                    stars = "International stars";
+                }
+                if (director.equals("")){
+                    director = "Famous director";
+                }
                 jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
                 movies.add(jmovie);
             }
@@ -193,7 +206,12 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-
+                if (postPic.equals("")){
+                    postPic = "./images/NoPicFind.png";
+                }
+                if (stars.equals("")){
+                    stars = "International stars";
+                }
                 jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
             }
             rs.close();
@@ -226,7 +244,15 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-
+                if (postPic.equals("")){
+                    postPic = "./images/NoPicFind.png";
+                }
+                if (stars.equals("")){
+                    stars = "International stars";
+                }
+                if (director.equals("")){
+                    director = "Famous director";
+                }
                 jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
                 movies.add(jmovie);
             }
@@ -261,6 +287,15 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
+                if (postPic.equals("")){
+                    postPic = "./images/NoPicFind.png";
+                }
+                if (stars.equals("")){
+                    stars = "International stars";
+                }
+                if (director.equals("")){
+                    director = "Famous director";
+                }
                 jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
                 movies.add(jmovie);
             }
@@ -279,7 +314,7 @@ public class JFilmDA {
         try {
             ResultSet rs = smt.executeQuery(sql);
             while (rs.next()) {
-                userId = rs.getString("userId");
+                userId = rs.getInt("userId");
                 movieId = rs.getInt("movieId");
                 rating = rs.getString("rating");
                 jrating = new JRating(userId, movieId, rating);
@@ -305,10 +340,11 @@ public class JFilmDA {
         try {
             ResultSet rs = smt.executeQuery(sql);
             while (rs.next()) {
-                userId = rs.getString("userId");
+                userId = rs.getInt("userId");
+                userName = rs.getString("userName");
                 password = rs.getString("password");
                 recommendedMovies = rs.getString("recommendedMovies");
-                juser = new JUser(userId, password, recommendedMovies);
+                juser = new JUser(userId, userName,password, recommendedMovies);
                 users.add(juser);
             }
             rs.close();

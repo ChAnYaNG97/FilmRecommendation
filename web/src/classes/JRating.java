@@ -2,21 +2,21 @@ package classes;
 
 import java.util.ArrayList;
 public class JRating {
-    private String userId;
+    private int userId;
     private int movieId;
     private String rating;
     public JRating(){}
-    public JRating(String userId, int movieId, String rating){
+    public JRating(int userId, int movieId, String rating){
         this.userId = userId;
         this.movieId = movieId;
         this.rating = rating;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
