@@ -3,6 +3,7 @@
 <%@ page language="java" pageEncoding="UTF-8" import="java.util.*" %>
 <%@ page import="classes.JMovie" %>
 <%JMovie movie = (JMovie)request.getAttribute("movie");%>
+    <%ArrayList<JMovie> relatedMovies = (ArrayList<JMovie>) request.getAttribute("relatedmovie");%>
 
 <head>
     <title>Hello, world!</title>
@@ -28,31 +29,17 @@
         <a>
             <img id="nav-img" src="./images/brand-white.png">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
+
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="./index.html">个人中心
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./profile.html">主页</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">消息</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input id="nav-search" class="form-control form-control-sm mr-sm-3" type="search" placeholder="搜索你感兴趣的内容" aria-label="Search">
-                <img class="mr-sm-3" id="nav-bell" src="./images/bell.png">
-                <img class="mr-sm-3" id="nav-head" src="./images/head.jpg">
+
+            <form class="form-inline my-2 my-lg-0" method="post" action="/web/search" accept-charset="utf-8">
+                <input id="nav-search" name="name" class="form-control form-control-sm mr-sm-3" type="search" placeholder="搜索你感兴趣的内容" aria-label="Search">
+                <button class="btn btn-primary btn-sm" method="post" action="/search" type="submit">search</button>
             </form>
+
+
         </div>
     </nav>
 
@@ -97,11 +84,13 @@
                             <thead>
                             <tr><th>Movie Name</th><th>Year</th><th>Genre</th><th>Director</th></tr>
                             </thead>
-                            <tr><td>Toy Story</td><td>1995</td><td>Comedy</td><td>Tom Hanks</td></tr>
-                            <tr><td>Toy Story</td><td>1995</td><td>Comedy</td><td>Tom Hanks</td></tr>
-                            <tr><td>Toy Story</td><td>1995</td><td>Comedy</td><td>Tom Hanks</td></tr>
-                            <tr><td>Toy Story</td><td>1995</td><td>Comedy</td><td>Tom Hanks</td></tr>
-                            <tr><td>Toy Story</td><td>1995</td><td>Comedy</td><td>Tom Hanks</td></tr>
+                            <%
+                                for(JMovie removie : relatedMovies) {
+                            %>
+                            <tr><td><a href="/web/display?id=<%=removie.getMovieId()%>"><%=removie.getMovieName()%></a></td><td><%=removie.getYear()%></td><td><%=removie.getGenre()%></td><td><%=removie.getDirector()%></td></tr>
+                            <%
+                            }
+                            %>
                         </table>
                 </div>
             </div>

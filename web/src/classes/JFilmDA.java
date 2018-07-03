@@ -55,7 +55,7 @@ public class JFilmDA {
 
     public static ArrayList<JMovie> FindAllMovies() {
         ConnectInit();
-        String sql = "SELECT * FROM Movie";
+        String sql = "SELECT * FROM Movie1";
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
         try {
@@ -147,7 +147,7 @@ public class JFilmDA {
 
     public static ArrayList<JMovie> FindMoviesByName(String mName) {
         ConnectInit();
-        String sql = "SELECT * FROM Movie WHERE lower(movieName) LIKE '%" + mName + "%'";
+        String sql = "SELECT * FROM Movie1 WHERE lower(movieName) LIKE '%" + mName + "%'";
         System.out.println(sql);
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
@@ -166,7 +166,7 @@ public class JFilmDA {
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
                 if (postPic.equals("")){
-                    postPic = "./images/NoPicFind.png";
+                    postPic = "./images/NoPicFind.jpg";
                 }
                 if (stars.equals("")){
                     stars = "International stars";
@@ -191,7 +191,7 @@ public class JFilmDA {
 
     public static JMovie FindMoviesById(int id) {
         ConnectInit();
-        String sql = "SELECT * FROM Movie WHERE movieId = " + id;
+        String sql = "SELECT * FROM Movie1 WHERE movieId = " + id;
         jmovie = null;
         try {
             ResultSet rs = smt.executeQuery(sql);
@@ -207,7 +207,7 @@ public class JFilmDA {
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
                 if (postPic.equals("")){
-                    postPic = "./images/NoPicFind.png";
+                    postPic = "./images/NoPicFind.jpg";
                 }
                 if (stars.equals("")){
                     stars = "International stars";
@@ -228,7 +228,7 @@ public class JFilmDA {
 
     public static ArrayList<JMovie> FindMoviesByYear(String mYear) {
         ConnectInit();
-        String sql = "SELECT * FROM Movie WHERE year = '" + mYear + "'";
+        String sql = "SELECT * FROM Movie1 WHERE year = '" + mYear + "'";
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
         try {
@@ -245,7 +245,7 @@ public class JFilmDA {
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
                 if (postPic.equals("")){
-                    postPic = "./images/NoPicFind.png";
+                    postPic = "./images/NoPicFind.jpg";
                 }
                 if (stars.equals("")){
                     stars = "International stars";
@@ -270,7 +270,7 @@ public class JFilmDA {
 
     public static  ArrayList<JMovie> FindMoviesWithNum(int mNum){
         ConnectInit();
-        String sql = "SELECT * FROM Movie ORDER BY RAND() LIMIT " + mNum;
+        String sql = "SELECT * FROM Movie1 ORDER BY RAND() LIMIT " + mNum;
         jmovie = null;
         ArrayList<JMovie> movies = new ArrayList<JMovie>();
         try {
@@ -288,7 +288,7 @@ public class JFilmDA {
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
                 if (postPic.equals("")){
-                    postPic = "./images/NoPicFind.png";
+                    postPic = "./images/NoPicFind.jpg";
                 }
                 if (stars.equals("")){
                     stars = "International stars";

@@ -6,7 +6,7 @@ body {
 }
 
 #nav-img {
-    height: 25px;
+    height: 40px;
 }
 form {
     margin-left: 20px;
@@ -21,13 +21,22 @@ form {
     margin-top: 100px;
     margin: auto;
 }
+
 .carousel-item img {
-   height: 720px;
+    margin: auto;
+    height: 720px;
 }
 .carousel-caption h3 {
     color: #91C2F2;
-}
+    width: 960px;
+    margin: auto;
 
+}
+.carousel-caption p {
+    width: 960px;
+    margin: auto;
+
+}
 .row {
     width: 1280px;
     margin: auto;

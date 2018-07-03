@@ -23,7 +23,7 @@ public class JMovie {
         this.postPic = postPic;
         this.stars = stars;
         this.country = country;
-        this. introduction = introduction;
+        this.introduction = introduction;
         this.relatedMovies = relatedMovies;
     }
 

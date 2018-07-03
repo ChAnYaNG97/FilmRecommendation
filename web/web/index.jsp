@@ -55,24 +55,24 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="./images/batman2.jpg" alt="First slide">
+            <img class="d-block" src="./images/shaw2.jpeg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>The Shawshank Redemption</h3>
+                <p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block" src="./images/batman3.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
                 <h3>The Dark Knight</h3>
                 <p>When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="./images/batman3.jpg" alt="Second slide">
+            <img class="d-block" src="./images/walle.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3>The Dark Knight</h3>
-                <p>When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="./images/batman.jpg" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h3>The Dark Knight</h3>
-                <p>When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+                <h3>Walle</h3>
+                <p>In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.</p>
             </div>
         </div>
     </div>
