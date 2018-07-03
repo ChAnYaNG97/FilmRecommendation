@@ -1,0 +1,82 @@
+#login-card
+{
+    width: 300px;
+    height:300px;
+    position: absolute;
+    top:20%;
+    left:50%;
+    margin-left:-9rem;
+}
+
+.card-head li a
+{
+    font-size: 12px;
+}
+
+.card-body
+{
+    width: 18rem;
+    margin: auto auto;
+}
+#username, #password
+{
+    width: 250px;
+    margin: auto auto;
+    margin-bottom:20px;
+}
+.card-body p
+{
+    font-size:12px; 
+}
+
+
+#login-img
+{
+    width: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#check
+{
+    margin-top:20px;
+}
+.buttons
+{
+    margin: auto auto;
+}
+
+#wechatMtd{
+    display: none;
+}
+
+#emailMtd{
+    display: block;
+}
+
+#mobileMtd{
+    display: none;
+}
+
+#mobile-img
+{
+    width: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#mobile-btn
+{
+    height: 31px;
+}
+#identity{
+    width:253px;
+}
+.input-group
+{
+    width: 253px;
+}
+
+#mobile{
+    margin-bottom: 30px;
+}

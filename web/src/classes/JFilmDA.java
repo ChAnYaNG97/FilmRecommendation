@@ -334,7 +334,7 @@ public class JFilmDA {
 
     public static ArrayList<JUser> FindUserById(String uId){
         ConnectInit();
-        String sql = "SELECT * FROM Rating WHERE  userId = ' " + uId + "'";
+        String sql = "SELECT * FROM Rating WHERE  userId = '" + uId + "'";
         juser = null;
         ArrayList<JUser> users = new ArrayList<JUser>();
         try {
@@ -358,6 +358,32 @@ public class JFilmDA {
         }
         return users;
     }
+
+    public static JUser FindUserByName(String uName){
+        ConnectInit();
+        String sql = "SELECT * FROM User WHERE  userName= '" + uName + "'";
+        juser = null;
+        try {
+            ResultSet rs = smt.executeQuery(sql);
+            while (rs.next()) {
+                userId = rs.getInt("userId");
+                userName = rs.getString("userName");
+                password = rs.getString("password");
+                recommendedMovies = rs.getString("recommendedMovies");
+                juser = new JUser(userId, userName,password, recommendedMovies);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Terminate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return juser;
+    }
+
 
 
 }

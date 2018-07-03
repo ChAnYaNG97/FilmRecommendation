@@ -74,17 +74,13 @@ form {
 }
 
 .header-content-wrapper {
-    background-color: #FFF;
+    background-color: #000;
     margin: auto;
 }
-
-
-#all-movie-header {
-    width: 15%;
+h1 {
+    color: white;
 }
-#recommended-movie-header {
-    width: 35%;
-}
+
 
 .media {
     border: 0px solid white;

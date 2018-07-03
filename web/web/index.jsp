@@ -43,6 +43,8 @@
             <input id="nav-search" name="name" class="form-control form-control-sm mr-sm-3" type="search" placeholder="搜索你感兴趣的内容" aria-label="Search">
             <button class="btn btn-primary btn-sm" method="post" action="/search" type="submit">search</button>
         </form>
+
+        <%=session.getAttribute("userId")%>
     </div>
 </nav>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -109,11 +111,15 @@
     %>
 
 </div>
+
 <div class="page-header" id="recommended-movie-header">
     <div class="header-content-wrapper">
-        <h1>Recommended Movies</h1>
+        <h1>You may like</h1>
     </div>
 </div>
+<%
+    if(session.getAttribute("userId") != null){
+%>
 <div class = "row">
     <%
         for(JMovie movie : list) {
@@ -134,6 +140,15 @@
     <%
         }
     %>
+    <%
+        }
+        else {
+    %>
+    <p>请先<a href="login.jsp">登陆</a></p>
+    <%
+        }
+    %>
+
 </div>
 
 

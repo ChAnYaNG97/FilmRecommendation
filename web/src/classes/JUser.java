@@ -53,4 +53,7 @@ public class JUser {
     public static ArrayList<JUser> FindUserById(String uId){
         return JFilmDA.FindUserById(uId);
     }
+
+    public static JUser FindUserByName(String uName){return JFilmDA.FindUserByName(uName);}
 }
+

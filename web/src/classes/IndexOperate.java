@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/")
+@WebServlet("/index")
 public class IndexOperate extends HttpServlet{
     public void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         ArrayList<JMovie> list = new ArrayList<JMovie>();
