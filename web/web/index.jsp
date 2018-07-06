@@ -9,10 +9,11 @@
 <html lang="en">
 <%@ page language="java" pageEncoding="UTF-8" import="java.util.*" %>
 <%@ page import="classes.JMovie" %>
+<%@ page import="classes.JFilmDA" %>
 <% ArrayList<JMovie> list = (ArrayList<JMovie>)request.getAttribute("list");%>
 
 <head>
-    <title>电影天堂</title>
+    <title>MovieFM</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8"></meta>
@@ -44,8 +45,16 @@
             <button class="btn btn-primary btn-sm" method="post" action="/search" type="submit">search</button>
         </form>
 
-        <%=session.getAttribute("userId")%>
+
     </div>
+    <div class="welcome">
+        <%if(session.getAttribute("userId") == null) {%>
+            <div><a href="login.jsp">Login</a></div>
+        <%}else{%>
+            Welcome, <%=session.getAttribute("userId")%>
+        <%
+        }
+        %>
 </nav>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -55,24 +64,25 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block" src="./images/shaw2.jpeg" alt="First slide">
+            <img class="d-block" src="./images/bat_superlogo.jpg" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>The Dark Knight</h3>
+                    <p>When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+                </div>
+            </div>
+        <div class="carousel-item">
+                <img class="d-block" src="./images/walle.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <h3>Walle</h3>
+                <p>In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img class="d-block" src="./images/shaw2.jpeg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
                 <h3>The Shawshank Redemption</h3>
                 <p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img class="d-block" src="./images/batman3.jpg" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h3>The Dark Knight</h3>
-                <p>When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img class="d-block" src="./images/walle.jpg" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h3>Walle</h3>
-                <p>In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.</p>
             </div>
         </div>
     </div>
@@ -119,10 +129,20 @@
 </div>
 <%
     if(session.getAttribute("userId") != null){
+        int id = Integer.parseInt(session.getAttribute("userId").toString());
+        System.out.println(id);
+        String str = JFilmDA.FindMovieByUserId(id);
+        String[] movieids = str.split(" ");
+        ArrayList<JMovie> recmovies = new ArrayList<JMovie>();
+        for(String ele : movieids) {
+            recmovies.add(JMovie.FindMoviesById(Integer.parseInt(ele)));
+        }
+
+
 %>
 <div class = "row">
     <%
-        for(JMovie movie : list) {
+        for(JMovie movie : recmovies) {
     %>
     <div class="media">
         <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
@@ -144,7 +164,9 @@
         }
         else {
     %>
-    <p>请先<a href="login.jsp">登陆</a></p>
+        <div class="page-header" id="all-movie-header">
+            <p class="footer">Please <a href="login.jsp">Login</a> First</p>
+        </div>
     <%
         }
     %>

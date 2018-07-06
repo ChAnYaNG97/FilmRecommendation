@@ -132,3 +132,10 @@ h1 {
 .movie-info {
     width: 220px;
 }
+.footer {
+    color: white;
+}
+.welcome {
+    margin-left: 100px;
+    color: white;
+}

@@ -6,7 +6,7 @@
     <%ArrayList<JMovie> relatedMovies = (ArrayList<JMovie>) request.getAttribute("relatedmovie");%>
 
 <head>
-    <title>Hello, world!</title>
+    <title>MovieFM</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8"></meta>
@@ -52,9 +52,9 @@
                         <img class="media-img" src="<%=movie.getPostPic()%>" alt="Generic placeholder image">
                             <div class="media-body">
                                 <div class="movie-title"><%=movie.getMovieName()%>&nbsp;&nbsp;<span class="movie-info-item-text"><%=movie.getYear()%></span>&nbsp;&nbsp;<span class="movie-info-item-text"><%=movie.getGenre()%></span></div>
-                                
+                                <div class="movie-rating">Rating:<%=movie.getMovieRating()%></div>
                                 <div class="movie-storyline"><%=movie.getIntroduction()%></div>
-                                
+
                             </div>
                         </div>
             </div>

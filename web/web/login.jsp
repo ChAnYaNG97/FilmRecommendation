@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Hello, world!</title>
+    <title>MovieFM</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8"></meta>
@@ -50,7 +50,7 @@
         //定义画布宽高和生成点的个数
         var WIDTH = window.innerWidth,
             HEIGHT = window.innerHeight,
-            POINT = 35;
+            POINT = 20;
 
         var canvas = document.getElementById('canvas');
         canvas.width = WIDTH,

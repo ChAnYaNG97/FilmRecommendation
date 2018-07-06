@@ -5,7 +5,7 @@
     <% ArrayList<JMovie> list = (ArrayList<JMovie>)request.getAttribute("list");%>
 
 <head>
-    <title>Hello, world!</title>
+    <title>MovieFM</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8"></meta>

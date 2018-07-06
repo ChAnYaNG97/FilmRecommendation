@@ -28,6 +28,7 @@ public class JFilmDA {
     static String rating;
     static String password;
     static String recommendedMovies;
+    static double averageRating;
 
     public static void ConnectInit() {
         try {
@@ -73,7 +74,8 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
+                averageRating = rs.getDouble("rating");
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, averageRating);
                 movies.add(jmovie);
 
             }
@@ -143,8 +145,28 @@ public class JFilmDA {
         return ratings;
     }
 
+    public static String FindMovieByUserId(int userId) {
+        ConnectInit();
+        String sql = "SELECT * FROM User1 WHERE userId = " + userId;
+        System.out.println(sql);
+        String result = "";
+        try {
+            ResultSet rs = smt.executeQuery(sql);
+            while(rs.next()){
+                result = rs.getString("recommendedMovies");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Terminate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
 
-
+    }
     public static ArrayList<JMovie> FindMoviesByName(String mName) {
         ConnectInit();
         String sql = "SELECT * FROM Movie1 WHERE lower(movieName) LIKE '%" + mName + "%'";
@@ -165,6 +187,7 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
+                averageRating = rs.getDouble("rating");
                 if (postPic.equals("")){
                     postPic = "./images/NoPicFind.jpg";
                 }
@@ -174,7 +197,7 @@ public class JFilmDA {
                 if (director.equals("")){
                     director = "Famous director";
                 }
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, averageRating);
                 movies.add(jmovie);
             }
             rs.close();
@@ -206,13 +229,14 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
+                averageRating = rs.getDouble("rating");
                 if (postPic.equals("")){
                     postPic = "./images/NoPicFind.jpg";
                 }
                 if (stars.equals("")){
                     stars = "International stars";
                 }
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies,averageRating);
             }
             rs.close();
         } catch (SQLException e) {
@@ -244,6 +268,7 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
+                averageRating = rs.getDouble("rating");
                 if (postPic.equals("")){
                     postPic = "./images/NoPicFind.jpg";
                 }
@@ -253,7 +278,7 @@ public class JFilmDA {
                 if (director.equals("")){
                     director = "Famous director";
                 }
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, averageRating);
                 movies.add(jmovie);
             }
             rs.close();
@@ -287,6 +312,7 @@ public class JFilmDA {
                 country = rs.getString("country");
                 introduction = rs.getString("introduction");
                 relatedMovies = rs.getString("relatedMovies");
+                averageRating = rs.getDouble("rating");
                 if (postPic.equals("")){
                     postPic = "./images/NoPicFind.jpg";
                 }
@@ -296,7 +322,7 @@ public class JFilmDA {
                 if (director.equals("")){
                     director = "Famous director";
                 }
-                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies);
+                jmovie = new JMovie(movieId, movieName, year, genre, director, postPic, stars, country, introduction, relatedMovies, averageRating);
                 movies.add(jmovie);
             }
             rs.close();

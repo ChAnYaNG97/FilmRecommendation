@@ -13,8 +13,9 @@ public class JMovie {
     private String country;
     private String introduction;
     private String relatedMovies;
+    private double rating;
     public JMovie(){}
-    public JMovie(int movieId, String movieName,String year, String genre, String director, String postPic, String stars, String country, String introduction, String relatedMovies){
+    public JMovie(int movieId, String movieName,String year, String genre, String director, String postPic, String stars, String country, String introduction, String relatedMovies, double rating){
         this.movieId = movieId;
         this.movieName = movieName;
         this.year = year;
@@ -25,6 +26,7 @@ public class JMovie {
         this.country = country;
         this.introduction = introduction;
         this.relatedMovies = relatedMovies;
+        this.rating = rating;
     }
 
     public int getMovieId() {
@@ -124,6 +126,14 @@ public class JMovie {
     }
     public static  JMovie FindMoviesById(int id){
         return JFilmDA.FindMoviesById(id);
+    }
+
+    public double getMovieRating() {
+        return rating;
+    }
+
+    public void setMovieRating(double rating) {
+        this.rating = rating;
     }
 
 
